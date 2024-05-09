@@ -1,132 +1,132 @@
 /** 
-☑️ 资源解析器 ©𝐒𝐡𝐚𝐰𝐧  ⟦2024-03-14 12:00⟧
+☑️ Trình phân tích tài nguyên©𝐒𝐡𝐚𝐰𝐧  ⟦2024-03-14 12:00⟧
 ----------------------------------------------------------
-🛠 发现 𝐁𝐔𝐆 请反馈: https://t.me/Shawn_Parser_Bot
-⛳️ 关注 🆃🅶 相关频道: https://t.me/QuanX_API
-📖 使用 教程: https://tinyurl.com/2jyygfom
+🛠 Đã tìm thấy 𝐁𝐔𝐆 Vui lòng phản hồi: https://t.me/Shawn_Parser_Bot
+⛳️ Theo dõi các kênh liên quan 🆃🅶: https://t.me/QuanX_API
+📖 Hướng dẫn sử dụng: https://tinyurl.com/2jyygfom
 🗣 🆃🄷🄰🄽🄺🅂 🆃🄾  @Jamie CHIEN, @M**F**, @c0lada, @Peng-YM, @vinewx, @love4taylor, @shadowdogy 
 
-🤖 主要功能: 
-❶ 将其它格式的⟦服务器订阅⟧解析成 𝐐𝐮𝐚𝐧𝐭𝐮𝐦𝐮𝐥𝐭 𝐗 格式
-☑︎ 支持 𝐕2𝐫𝐚𝐲𝐍/𝗦𝗦(𝗥/𝗗)/𝗛𝗧𝗧𝗣(𝗦)/𝗧𝗿𝗼𝗷𝗮𝗻/𝐕𝐋𝗲𝐬𝐬/𝗤𝘂𝗮𝗻𝘁𝘂𝗺𝘂𝗹𝘁(𝗫)/𝗦𝘂𝗿𝗴𝗲/𝐂𝐥𝐚𝐬𝐡/𝐒𝐡𝐚𝐝𝐨𝐰𝐫𝐨𝐜𝐤𝐞𝐭/𝐋𝐨𝐨𝐧 格式
-☑︎ 提供说明 1⃣️ 中的可选个性化参数(筛选、重命名 等)
-❷ 𝗿𝗲𝘄𝗿𝗶𝘁𝗲(重写) & 𝗳𝗶𝗹𝘁𝗲𝗿(分流) 的 转换 & 筛选 
-☑︎ 用于禁用/修改远程引用中某(几)项 𝗿𝗲𝘄𝗿𝗶𝘁𝗲/𝗵𝗼𝘀𝘁𝗻𝗮𝗺𝗲/𝗳𝗶𝗹𝘁𝗲𝗿
-☑︎ 𝐒𝐮𝐫𝐠𝐞/𝐂𝐥𝐚𝐬𝐡 类型规则 𝗹𝗶𝘀𝘁 与 模块 𝐦𝐨𝐝𝐮𝐥𝐞 的解析使用
+🤖 Chức năng chính: 
+❶ Phân tích ⟦Server Subscriptions⟧ ở các định dạng khác thành định dạng 𝐐𝐮𝐚𝐧𝐭𝐮𝐦𝐮𝐥𝐭 𝐗
+☑︎ Hỗ trợ 𝐕2𝐫𝐚𝐲𝐍/𝗦𝗦(𝗥/𝗗)/𝗛𝗧𝗧𝗣(𝗦)/𝗧𝗿𝗼𝗷𝗮𝗻/𝐕𝐋𝗲𝐬𝐬/𝗤𝘂𝗮𝗻𝘁𝘂𝗺𝘂𝗹𝘁(𝗫)/𝗦𝘂𝗿𝗴𝗲/𝐂𝐥𝐚𝐬𝐡/𝐒𝐡𝐚𝐝𝐨𝐰𝐫𝐨𝐜𝐤𝐞𝐭/𝐋𝐨𝐨𝐧 Định dạng
+☑︎ Cung cấp các tham số cá nhân hóa tùy chọn (lọc, đổi tên, v.v.) trong mô tả 1⃣️
+❷ 𝗿𝗲𝘄𝗿𝗶𝘁𝗲 (viết lại)&𝗳𝗶𝗹𝘁𝗲 (shunt) Chuyển đổi&sàng lọc 
+☑︎ Được sử dụng để tắt/sửa đổi (các) mục nhất định trong tham chiếu từ xa 𝗿𝗲𝘄𝗿𝗶𝘁𝗲/𝗵𝗼𝘀𝘁𝗻𝗮𝗺𝗲/𝗳𝗶𝗹𝘁𝗲𝗿
+☑︎ Phân tích và sử dụng 𝐒𝐮𝐫𝐠𝐞/𝐂𝐥𝐚𝐬𝐡 quy tắc loại 𝗹𝗶𝘀𝘁 và mô-đun 𝐦𝐨𝐝𝐮𝐥𝐞
 ----------------------------------------------------------
-0️⃣ 在 ⟦订阅链接⟧ 后加 "#" 使用, 不同参数用 "&" 连接 
-⚠️ ☞ "你的订阅连接#emoji=1&tfo=1&in=香港+台湾"
-❖ 本地资源片段引用, 请将参数如 "#in=xxx&out=yyy" 填入资源片段的第 ① 行
-❖ 🚦 支持中文, "操作" 以下特殊字符时请先替换(URL-Encode) 🚦
-  ∎ "+"⇒"%2B", 空格⇒"%20", "@"⇒"%40", "&"⇒"%26", "."⇒"\.", ","⇒"%2C"
+0️⃣  Thêm "#" để sử dụng sau ⟦ đăng ký liên kết ⟧ và các tham số khác nhau được kết nối với "&"
+⚠️ ☞ "Liên kết đăng ký của bạn #emoji=1&tfo=1&in=Hong Kong+Taiwan"
+❖ Để tham chiếu một đoạn tài nguyên cục bộ, vui lòng điền các tham số như "#in=xxx&out=yyy" vào dòng ① của đoạn tài nguyên.
+❖ 🚦 Hỗ trợ tiếng Trung, vui lòng thay thế (URL-Encode) trước khi "thao tác" các ký tự đặc biệt sau 🚦
+  ∎ "+"⇒"%2B", Khoảng trắng⇒"%20", "@"⇒"%40", "&"⇒"%26", "."⇒"\.", ","⇒"%2C"
 
-1️⃣ ⟦𝐬𝐞𝐫𝐯𝐞𝐫 节点⟧ ➠ 参数说明:
-⦿ emoji=1(国行设备用2)/-1, 添加/删除节点名内地区旗帜;
-⦿ udp=1/-1, tfo=1/-1, 分别强制开启(关闭) 𝐮𝐝𝐩-𝐫𝐞𝐥𝐚𝐲/𝐟𝐚𝐬𝐭-𝐨𝐩𝐞𝐧;
-⦿ uot=1, 开启 udp-over-tcp=true选项（仅限SS(R)）
-⦿ cert=1/-1, 分别开启/关闭 𝐭𝐥𝐬 证书验证(默认关闭);
-  ❖ csha/psha, tls-cert-sha256 以及 tls-pubkey-sha256 参数
-  ❖ alpn, 指定over-tls类型节点的alpn参数
-⦿ in, out, regex, regout 分别为 保留、删除、正则保留、正则删除 节点;
-  ❖ in/out 仅对节点名匹配生效, 多参数(逻辑"或")用 "+", 逻辑"与"用 "." 表示;
-  ❖ regex/regout 对节点的完整信息进行匹配(类型、端口、加密等);
-  ❖ 示范: "in=香港.0\.2倍率+台湾&out=BGP&regex=iplc"
-⦿ rename 重命名, "旧名@新名", "前缀@", "@后缀", 用 "+" 连接多个参数;
-  ❖ 删除字段: "字段1.字段2☠️", 想删除 "." 时用 "\." 替代
-  ❖ 示范: "rename=香港@𝐇𝐊+[𝐒𝐒]@+@[1𝐗]+流量.0\.2☠️"
-  ❖ 默认 emoji 先生效, 如想调换顺序, 请用 rrname 参数
-⦿ replace 正则替换节点中字段, 可用于重命名/更改加密方式等
+1️⃣ ⟦𝐬𝐞𝐫𝐯𝐞𝐫 nút máy chủ ⟧ ➠ Mô tả tham số:
+⦿ emoji=1(2 đối với thiết bị của Ngân hàng Quốc gia)/-1, thêm/xóa cờ khu vực trong tên nút;
+⦿ udp=1/-1, tfo=1/-1, Bắt buộc mở (đóng)) 𝐮𝐝𝐩-𝐫𝐞𝐥𝐚𝐲/𝐟𝐚𝐬𝐭-𝐨𝐩𝐞𝐧;
+⦿ uot=1, bật tùy chọn udp-over-tcp=true (chỉ SS(R))
+⦿ cert=1/-1, Bật/tắt xác minh chứng chỉ 𝐭𝐥𝐬 tương ứng (tắt theo mặc định);
+  ❖ Các tham số csha/psha, tls-cert-sha256 và tls-pubkey-sha256
+  ❖ alpn, chỉ định tham số alpn cho các nút kiểu over-tls
+⦿ in, out, regex, regout Giữ lại, xóa, giữ lại chính quy, xóa nút chính quy, tương ứng;
+  ❖ in/out Nó chỉ có hiệu lực đối với việc khớp tên nút. Nhiều tham số (logic "hoặc") được biểu thị bằng "+" và logic "và" được biểu thị bằng ".";
+  ❖ regex/regout Khớp thông tin đầy đủ của nút (loại, cổng, mã hóa, v.v.);
+  ❖ Trình diễn: "in=Hong Kong.0.2X+Đài Loan&out=BGP&regex=iplc"
+⦿ rename Đổi tên, "tên cũ @ tên mới", "tiền tố @", "@ hậu tố", kết nối nhiều tham số với "+";
+  ❖ Xóa các trường: "Trường 1. Trường 2☠️", nếu bạn muốn xóa ".", thay vào đó hãy sử dụng "\."
+  ❖ Trình diễn: "rename=Hong Kong@𝐇𝐊+[𝐒𝐒]@+@[1𝐗]+Lưu lượng.0\.2☠️"
+  ❖ emoji mặc định có hiệu lực trước, nếu bạn muốn thay đổi thứ tự, hãy sử dụng tham số rrname
+⦿ replace Việc thay thế thường xuyên các trường trong nút có thể được sử dụng để đổi tên/thay đổi phương thức mã hóa, v.v.
   ❖ replace=regex1@𝘀𝘁𝗿1+regex2@𝘀𝘁𝗿2
-⦿ ptn/npt=1-8, 将节点名英文/数字替换成样式 ⇒ 🅰/🄰/𝐀/𝗮/𝔸/𝕒/ᵃ/ᴬ, ①\❶\⓵\𝟙\¹\₁\𝟏\𝟷
-⦿ delreg, 利用正则表达式来删除 "节点名" 中的字段(⚠️ 慎用)
-⦿ aead=-1, 关闭 Vmess 的 AEAD 参数
-⦿ host=xxx, 修改已有 host , 如要增加host，请用☠️结尾
-⦿ obfs=vhttp/shttp, 指定 obfs=shadowsocks-http 或 obfs=vmess-http 的特殊需求
-⦿ tsession=0/1/2, 0/1 代表关闭 tls-session-ticket/reuse，2 表示全部关闭
-⦿ checkurl=xxx , 指定 server_check_url 参数
-⦿ sort=1/-1/x/参数规则, 按节点名 正/逆/随机/参数规则 排序
-  ❖ 参数规则是正则表达式或简单关键词, 用"<" 或 ">" 连接
-  ❖ sort=🇭🇰>🇸🇬>🇯🇵>🇺🇸 , 靠前排序
-  ❖ sort=IEPL<IPLC<BGP , 靠后排序
-⦿ info=1, 开启通知提示机场 ✈️ 流量信息(如有提供);
-⦿ flow=2022-06-02:1000:54, 订阅到期时间:总流量:已用流量
-⦿ 占位符，可用于 rename/replace 等操作
-  ❖ $type0/1/2/3/4/5/6/7 占位符，将节点类型(ss/ssr/vmess 等)作为可操作参数，如
+⦿ ptn/npt=1-8, Thay thế tên nút tiếng Anh/số bằng kiểu ⇒ 🅰/🄰/𝐀/𝗮/𝔸/𝕒/ᵃ/ᴬ, ①\❶\⓵\𝟙\¹\₁\𝟏\𝟷
+⦿ delreg, Sử dụng biểu thức thông thường để xóa các trường trong "Tên nút" (⚠️ Sử dụng thận trọng)
+⦿ aead=-1, Tham số AEAD cho Vmess đã đóng
+⦿ host=xxx, Sửa đổi máy chủ hiện có. Nếu bạn muốn thêm máy chủ, vui lòng kết thúc bằng ☠️
+⦿ obfs=vhttp/shttp, Chỉ định các yêu cầu đặc biệt cho obfs=shadowsocks-http hoặc obfs=vmess-http
+⦿ tsession=0/1/2, 0/1 Đóng tls-session-ticket/reuse, 2 là đóng tất cả
+⦿ checkurl=xxx , Chỉ định tham số server_check_url
+⦿ sort=1/-1/x/Quy tắc tham số, được sắp xếp theo quy tắc tiến/nghịch đảo/ngẫu nhiên/tham số của tên nút
+  ❖ Quy tắc tham số là biểu thức chính quy hoặc từ khóa đơn giản, được kết nối bằng "<" hoặc ">"
+  ❖ sort=🇭🇰>🇸🇬>🇯🇵>🇺🇸 , Sắp xếp theo hàng đầu
+  ❖ sort=IEPL<IPLC<BGP , Sắp xếp tiếp theo
+⦿ info=1, Bật thông báo nhắc sân bay ✈️ thông tin giao thông (nếu được cung cấp);
+⦿ flow=2022-06-02:1000:54, Thời gian hết hạn đăng ký:Tổng lưu lượng truy cập:Lưu lượng truy cập đã sử dụng
+⦿ Bộ giữ chỗ, có thể được sử dụng cho các hoạt động như rename/replace
+  ❖ $type0/1/2/3/4/5/6/7 Trình  giữ chỗ, lấy loại nút (ss/ssr/vmess, v.v.) làm đối số hoạt động, chẳng hạn như
     ∎ rename=@|$type2
-    ∎ 样式分别为 "𝐬𝐬","𝐒𝐒","🅢🅢","🆂🆂","ⓢⓢ","🅂🅂","𝕊𝕊","ˢˢ"
-  ❖ $index0/1/2/3/4/5/6/7/8 占位符，将节点的序号作为可操作参数，如
+    ∎ Các kiểu lần lượt là "𝐬𝐬","𝐒𝐒","🅢🅢","🆂🆂","ⓢⓢ","🅂🅂","𝕊𝕊","ˢˢ"
+  ❖ $index0/1/2/3/4/5/6/7/8 Trình giữ chỗ, lấy số sê-ri của nút làm tham số có thể hoạt động, chẳng hạn như
     ∎ rename=@「$index1」
-    ∎ 样式分别为 1\①\❶\⓵\𝟙\¹\₁\𝟏\𝟷
-  ❖ $emoji1/2 占位符, 将emoji(🇭🇰 等)作为可操作参数
+    ∎ Các kiểu lần lượt là 1\①\❶\⓵\𝟙\¹\₁\𝟏\𝟷
+  ❖ $emoji1/2 Trình giữ chỗ, lấy biểu tượng cảm xúc (🇭🇰, v.v.) làm tham số có thể hoạt động
     ∎ rename=@「$emoji1」
-  ❖ $tag 占位符，将订阅的 tag 作为可操作参数，如
-    ∎ 可接数字以单独给 tag 添加字母/数字样式
-    ∎ rename=@「$tag34」, 样式同下边的 ptn/npt
-⦿ ⟦进阶参数⟧: 𝘀𝗳𝗶𝗹𝘁𝗲𝗿/𝘀𝗿𝗲𝗻𝗮𝗺𝗲, 传入一段 base64 编码的脚本, 可用于更为复杂的[过滤/重命名] 需求
-  ❖ 说明: https://github.com/KOP-XIAO/QuantumultX/pull/9
+  ❖ $tag Trình giữ chỗ, lấy thẻ đã đăng ký làm tham số có thể hoạt động, chẳng hạn như
+    ∎ Các số có thể được kết nối để thêm kiểu chữ/số vào các thẻ riêng lẻ.
+    ∎ rename=@「$tag34」, Phong cách tương tự như dưới đây ptn/npt
+⦿ ⟦Thông số nâng cao⟧: 𝘀𝗳𝗶𝗹𝘁𝗲𝗿/𝘀𝗿𝗲𝗻𝗮𝗺𝗲, chuyển vào tập lệnh được mã hóa base64, có thể được sử dụng cho các yêu cầu [lọc/đổi tên] phức tạp hơn
+  ❖ Minh họa: https://github.com/KOP-XIAO/QuantumultX/pull/9
 
-2⃣️ ⟦𝐫𝐞𝐰𝐫𝐢𝐭𝐞 重写⟧/⟦𝐟𝐢𝐥𝐭𝐞𝐫 分流⟧ ➠ 参数说明:
-⦿ in, out, 根据关键词 保留/禁用 相关分流、重写规则;
-⦿ inhn, outhn, “保留/删除”主机名(𝒉𝒐𝒔𝒕𝒏𝒂𝒎𝒆);
-  ❖ 示范: 禁用 "淘宝比价" 及 "weibo" 的 js 同主机名
+2⃣️ ⟦𝐫𝐞𝐰𝐫𝐢𝐭𝐞 viết lại ⟧/⟦𝐟𝐢𝐥𝐭𝐞𝐫 shunt ⟧ ➠ Mô tả thông số:
+⦿ in, out, Các quy tắc chuyển hướng và viết lại có liên quan dựa trên việc lưu giữ/vô hiệu hóa từ khóa;
+⦿ inhn, outhn, "Giữ/Xóa" tên máy chủ (𝒉𝒐𝒔𝒕𝒏𝒂𝒎𝒆);
+  ❖ Ví dụ: Vô hiệu hóa js của "Taobao" và "Weibo"
   𝐡𝐭𝐭𝐩𝐬://𝐦𝐲𝐥𝐢𝐬𝐭#out=tb_price.js+wb_ad.js&outhn=weibo
-⦿ regex/regout, 正则保留/删除, 请自行折腾正则表达式;
-  ❖ 可与 in(hn)/out(hn) 一起使用，in(hn)/out(hn) 会优先执行;
-  ❖ 对 𝒉𝒐𝒔𝒕𝒏𝒂𝒎𝒆 & 𝐫𝐞𝐰𝐫𝐢𝐭𝐞/𝐟𝐢𝐥𝐭𝐞𝐫 同时生效(⚠️ 慎用)
-⦿ policy 参数, 用于直接指定策略组，或为 𝐒𝐮𝐫𝐠𝐞 类型 𝗿𝘂𝗹𝗲-𝘀𝗲𝘁 生成策略组(默认"𝐒𝐡𝐚𝐰𝐧"策略组);
-⦿ pset=regex1@policy1+regex2@policy2, 为同一分流规则中不同关键词(允许正则表达式)指定不同策略组;
-⦿ replace 参数, 正则替换 𝐟𝐢𝐥𝐭𝐞𝐫/𝐫𝐞𝐰𝐫𝐢𝐭𝐞 内容, regex@newregex;
-  ❖ 将淘宝比价中脚本替换成 lite 版本(如有此版本的脚本)
+⦿ regex/regout, Để giữ lại/xóa biểu thức chính quy, vui lòng tự mình sử dụng biểu thức chính quy;
+  ❖ Có sẵn với in(hn)/out(hn) Khi được sử dụng cùng nhau, in(hn)/out(hn) sẽ được thực thi trước;
+  ❖ 对 𝒉𝒐𝒔𝒕𝒏𝒂𝒎𝒆 & 𝐫𝐞𝐰𝐫𝐢𝐭𝐞/𝐟𝐢𝐥𝐭𝐞𝐫 Hiệu quả đồng thời (⚠️ thận trọng khi sử dụng)
+⦿ policy Tham số, được sử dụng để chỉ định trực tiếp nhóm chiến lược hoặc tạo nhóm chiến lược cho loại 𝐒𝐮𝐫𝐠𝐞 loại 𝗿𝘂𝗹𝗲-𝘀𝗲𝘁 (nhóm chiến lược "𝐒𝐡𝐚𝐰𝐧" mặc định);
+⦿ pset=regex1@policy1+regex2@policy2, Chỉ định các nhóm chính sách khác nhau cho các từ khóa khác nhau (cho phép biểu thức thông thường) trong cùng một quy tắc chuyển hướng;
+⦿ replace Các tham số, thay thế thường xuyên nội dung 𝐟𝐢𝐥𝐭𝐞𝐫/𝐫𝐞𝐰𝐫𝐢𝐭𝐞, regex@newregex;
+  ❖ Thay thế kịch bản trong Taobao Ratio bằng phiên bản lite (nếu có phiên bản này của kịch bản)
     ∎ replace=(price)(.*)@$1_lite$2
-⦿ dst=rewrite/filter，分别为将 𝐦𝐨𝐝𝐮𝐥𝐞&𝗿𝘂𝗹𝗲-𝘀𝗲𝘁 转换成 重写/分流;
-  ❖ ⚠️ 默认将 𝐦𝐨𝐝𝐮𝐥𝐞 转换到重写, 𝗿𝘂𝗹𝗲-𝘀𝗲𝘁 转成分流
-  ❖ ⚠️ 把 𝗿𝘂𝗹𝗲-𝘀𝗲𝘁 中 url-regex 转成重写时, 必须要加 dst=rewrite;
-  ❖ ⚠️ 把 𝐦𝐨𝐝𝐮𝐥𝐞 中的分流规则转换时, 必须要加 dst=filter
-⦿ cdn=1, 将 github 脚本的地址转换成免翻墙 fastly.jsdelivr.net/gh
-⦿ fcr=1/2/3, 为分流规则添加 force-cellular/multi-interface/multi-interface-balance 参数，强制移动数据/混合数据/负载均衡
-⦿ via=接口, 为分流规则添加 via-interface 参数, 0 表示 via-interface=%TUN%
-⦿ relay=目标策略名, 批量将节点订阅转换为ip/host规则，用于实现代理链
+⦿ dst=rewrite/filter，Để chuyển đổi 𝐦𝐨𝐝𝐮𝐥𝐞&𝗿𝘂𝗹𝗲-𝘀𝗲𝘁 thành viết lại/chuyển hướng tương ứng;
+  ❖ ⚠️ Mặc định 𝐦𝐨𝐝𝐮𝐥𝐞 được chuyển thành viết lại, 𝗿𝘂𝗹𝗲-𝘀𝗲𝘁 được chuyển thành chia tách
+  ❖ ⚠️ Khi chuyển đổi url-regex trong 𝗿𝘂𝗹𝗲-𝘀𝗲𝘁 để viết lại, bạn phải thêm dst=rewrite;
+  ❖ ⚠️ Khi chuyển đổi quy tắc chuyển hướng trong 𝐦𝐨𝐝𝐮𝐥𝐞 phải thêm dst=filter
+⦿ cdn=1, Chuyển đổi địa chỉ của tập lệnh github để vượt qua tường lửa fastly.jsdelivr.net/gh
+⦿ fcr=1/2/3, Thêm vào các quy tắc chuyển hướng force-cellular/multi-interface/multi-interface-balance tham số, buộc dữ liệu di động/trộn dữ liệu/cân bằng tải
+⦿ via=Giao diện, Thêm vào các quy tắc chuyển hướng via-interface Thông số, 0 thể hiện via-interface=%TUN%
+⦿ relay=Tên chính sách mục tiêu, chuyển đổi hàng loạt đăng ký nút thành quy tắc ip/host để thực hiện chuỗi proxy
 
-3⃣️ 其他参数
-⦿ 通知参数 ntf=0/1, 用于 关闭/打开 资源解析器的提示通知
-  ❖ 𝗿𝗲𝘄𝗿𝗶𝘁𝗲/𝗳𝗶𝗹𝘁𝗲𝗿 默认“开启”通知提示, 以防规则误删除
-  ❖ 𝘀𝗲𝗿𝘃𝗲𝗿 资源解析则默认”关闭“通知提示
-⦿ 类型参数 type=domain-set/rule/module/list/nodes
-  ❖ 当解析器未能正确识别类型时, 可尝试使用此参数强制指定
-⦿ 隐藏参数 hide=0, 禁用筛除的分流/重写，默认方式为删除
-⦿ profile=111 , URL-Scheme 添加 QuanX 类型配置中远程资源
+3⃣️ Tham số khác
+⦿Tham số thông báo ntf=0/1, được sử dụng để tắt/bật thông báo nhắc nhở của trình phân tích cú pháp tài nguyên
+  ❖ 𝗿𝗲𝘄𝗿𝗶𝘁𝗲/𝗳𝗶𝗹𝘁𝗲𝗿 Lời nhắc thông báo "bật" mặc định trong trường hợp quy tắc bị xóa do nhầm lẫn
+  ❖ 𝘀𝗲𝗿𝘃𝗲𝗿 Phân tích tài nguyên thì mặc định "tắt" nhắc nhở thông báo
+⦿ Kiểu Tham số type=domain-set/rule/module/list/nodes
+  ❖ Khi bộ phân tích cú pháp không nhận dạng đúng kiểu, bạn có thể thử sử dụng tham số này để buộc chỉ định
+⦿ Ẩn tham hide=0, tắt lọc chuyển hướng/viết lại, chế độ mặc định là xóa
+⦿ profile=111 , URL-Scheme Thêm tài nguyên từ xa trong cấu hình kiểu QuanX
 ----------------------------------------------------------
 */
 
 /**
-* 使用说明，
-0️⃣ 在QuantumultX 配置文件中[general] 部分，加入 
+* Hướng dẫn sử dụng,
+0️⃣ Trong phần [general] của tập tin cấu hình QuantumultX,hãy thêm 
 resource_parser_url = https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/resource-parser.js
-⚠️⚠️如提示"没有自定义解析器"，请长按右下角图标后点击左侧刷新按钮，更新资源，后台退出 app，直到出现解析器说明
+⚠️⚠️Nếu nó nhắc "Không có trình phân tích cú pháp tùy chỉnh", vui lòng nhấn và giữ biểu tượng ở góc dưới bên phải và nhấp vào nút làm mới ở bên trái để cập nhật tài nguyên và thoát ứng dụng ở chế độ nền cho đến khi mô tả trình phân tích cú pháp xuất hiện.
 
 ------------------------------
 */
 
-//beginning 解析器正常使用，調試註釋此部分
+//beginning Trình phân tích cú pháp được sử dụng bình thường, gỡ lỗi bình luận phần này
 
 let [link0, content0, subinfo] = [$resource.link, $resource.content, $resource.info]
 let version = typeof $environment != "undefined" ? Number($environment.version.split("build")[1]): 0 // 版本号
-let Perror = 0 //错误类型
+let Perror = 0 //Loại lỗi
 
 const subtag = typeof $resource.tag != "undefined" ? $resource.tag : "";
-////// 非 raw 链接的沙雕情形
+////// Tình huống hộp cát liên kết không thô
 content0 = content0.indexOf("DOCTYPE html") != -1 && link0.indexOf("github.com") != -1 ? ToRaw(content0) : content0 ;
-//ends 正常使用部分，調試註釋此部分
+//ends Phần sử dụng bình thường, gỡ lỗi bình luận phần này
 
 
 var para = /^(http|https)\:\/\//.test(link0) ? link0 : content0.split("\n")[0];
 var para1 = para.slice(para.indexOf("#") + 1).replace(/\$type/g,"node_type_para_prefix").replace(/\$emoji/g,"node_emoji_flag_prefix").replace(/\$tag/g,"node_tag_prefix").replace(/\$index/g,"node_index_prefix") //防止参数中其它位置也存在"#"
-var mark0 = para.indexOf("#") != -1 ? true : false; //是否有參數需要解析
+var mark0 = para.indexOf("#") != -1 ? true : false; // Có tham số nào cần được phân tích cú pháp không
 var Pinfo = mark0 && para1.indexOf("info=") != -1 ? para1.split("info=")[1].split("&")[0] : 0;
 var ntf_flow = 0;
-//常用量
+//Số lượng thường dùng
 const Base64 = new Base64Code();
-const escapeRegExp = str => str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&'); //处理特殊符号以便正则匹配使用
+const escapeRegExp = str => str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&'); //Xử lý các ký hiệu đặc biệt để khớp chính quy
 var link1 = link0.split("#")[0]
 const qxpng = "https://raw.githubusercontent.com/crossutility/Quantumult-X/master/quantumult-x.png" // server sub-info link
 const subinfo_link = { "open-url": "https://t.me/QuanX_API", "media-url": "https://shrtm.nu/ebAr" };
@@ -140,7 +140,7 @@ const sub_link = { "open-url": link1, "media-url": "https://shrtm.nu/ebAr" } // 
 const update_link = {"open-url" : "https://apps.apple.com/us/app/quantumult-x/id1443988620", "media-url": qxpng}
 const plink0 = {"open-url" : link0, "media-url": qxpng} // 跳转订阅链接
 
-if(version == 0) { $notify("⚠️ 请更新 Quantumult X 至最新商店版本\n","🚦 当前版本可能无法正常使用部分功能","\n👉 点击跳转商店链接更新",update_link) }
+if(version == 0) { $notify("⚠️ Vui lòng cập nhật Quantumult X lên phiên bản cửa hàng mới nhất\n","🚦 Một số chức năng có thể không hoạt động bình thường trong phiên bản hiện tại","\n👉 Bấm để chuyển sang cập nhật liên kết cửa hàng Appstore",update_link) }
 
 const ADDRes = `quantumult-x:///add-resource?remote-resource=url-encoded-json`
 var RLink0 = {
@@ -155,10 +155,10 @@ const Field = {
 }  
 
 
-SubFlow() //流量通知
+SubFlow() // thông báo giao thông
 
 
-// 参数获取
+// Nhận tham số
 var Pin0 = mark0 && para1.indexOf("in=") != -1 ? (para1.split("in=")[1].split("&")[0].split("+")).map(decodeURIComponent) : null;
 var Pout0 = mark0 && (para.indexOf("#out=") != -1 || para.indexOf("&out=") != -1)? ((para.indexOf("#out=")!=-1? para.split("#out="): para.split("&out="))[1].split("&")[0].split("+")).map(decodeURIComponent) : null;
 var Psfilter = mark0 && para1.indexOf("sfilter=") != -1 ? Base64.decode(para1.split("sfilter=")[1].split("&")[0]) : null; // script filter
@@ -193,33 +193,33 @@ var pfihn = mark0 &&Phin0 ? "inhn=" + Phin0.join(", ") + ",  " : ""
 var pfohn = mark0 &&Phout0 ? "outhn=" + Phout0.join(", ") : ""
 var Pcnt =  mark0 &&para1.indexOf("cnt=") != -1 ? para1.split("cnt=")[1].split("&")[0] : 0;
 var Pcap = mark0 &&para1.indexOf("cap=") != -1 ? para1.split("cap=")[1].split("&")[0] : "";
-var Pptn = mark0 &&para1.indexOf("ptn=") != -1 ? para1.split("ptn=")[1].split("&")[0] : ""; //花式英文字符
-var Pnptn = mark0 &&para1.indexOf("npt=") != -1 ? para1.split("npt=")[1].split("&")[0] : ""; //花式数字
+var Pptn = mark0 &&para1.indexOf("ptn=") != -1 ? para1.split("ptn=")[1].split("&")[0] : ""; //Ký tự tiếng Anh ưa thích
+var Pnptn = mark0 &&para1.indexOf("npt=") != -1 ? para1.split("npt=")[1].split("&")[0] : ""; //những con số lạ mắt
 var Pcdn = mark0 &&para1.indexOf("cdn=") != -1 ? para1.split("cdn=")[1].split("&")[0] : "";
 let [flow, exptime, errornode, total] = "";
-var Pdel = mark0 && para1.indexOf("del=") != -1 ? para1.split("del=")[1].split("&")[0] : 0; //删除重复节点
+var Pdel = mark0 && para1.indexOf("del=") != -1 ? para1.split("del=")[1].split("&")[0] : 0; //Xóa bỏ các nút trùng lặp
 var typeU = mark0 && para1.indexOf("type=") != -1 ? para1.split("type=")[1].split("&")[0] : "";
-var Pfcr = mark0 && para1.indexOf("fcr=") != -1 ? para1.split("fcr=")[1].split("&")[0] : ""; // force-cellular 等参数
-var Pvia = mark0 && para1.indexOf("via=") != -1 ? para1.split("via=")[1].split("&")[0] : ""; // via-interface 参数
-var Paead = mark0 && para1.indexOf("aead=") != -1 ? para1.split("aead=")[1].split("&")[0] : ""; // vmess aead 参数
+var Pfcr = mark0 && para1.indexOf("fcr=") != -1 ? para1.split("fcr=")[1].split("&")[0] : ""; // force-cellular Tham số đẳng cấp
+var Pvia = mark0 && para1.indexOf("via=") != -1 ? para1.split("via=")[1].split("&")[0] : ""; // via-interface Tham số
+var Paead = mark0 && para1.indexOf("aead=") != -1 ? para1.split("aead=")[1].split("&")[0] : ""; // vmess aead Tham số
 var Phost = mark0 && ( para.indexOf("#host=") != -1 || para.indexOf("&host=") != -1) ? (para.indexOf("#host=")!=-1? para.split("#host="): para.split("&host="))[1].split("&")[0] : ""; // host 混淆参数
-var Pcsha256 = mark0 && para1.indexOf("csha=") != -1 && version >= 646? para1.split("csha=")[1].split("&")[0] : ""; // cert-sha256 混淆参数
-var Ppsha256 = mark0 && para1.indexOf("psha=") != -1 && version >= 646? para1.split("psha=")[1].split("&")[0] : ""; // pubkey-sha256 混淆参数
-var typeQ = $resource.type? $resource.type:"unsupported"   //返回 field 类型参数
-var PRelay =mark0 && para1.indexOf("relay=") != -1 ? decodeURIComponent(para1.split("relay=")[1].split("&")[0]) : ""; // 节点 relay 参数, 用于实现代理链功能
-var PUOT = mark0 && para1.indexOf("uot=") != -1 && version >= 665? para1.split("uot=")[1].split("&")[0] : ""; // 节点 udp-over-tcp 开启
-var PcheckU = mark0 && para1.indexOf("checkurl=") != -1 ? decodeURIComponent(para1.split("checkurl=")[1].split("&")[0]) : ""; // 节点 server_check_url 参数
+var Pcsha256 = mark0 && para1.indexOf("csha=") != -1 && version >= 646? para1.split("csha=")[1].split("&")[0] : ""; // cert-sha256 Thông số gây nhầm lẫn
+var Ppsha256 = mark0 && para1.indexOf("psha=") != -1 && version >= 646? para1.split("psha=")[1].split("&")[0] : ""; // pubkey-sha256 Thông số gây nhầm lẫn
+var typeQ = $resource.type? $resource.type:"unsupported"   //Quay lại field Kiểu Tham số
+var PRelay =mark0 && para1.indexOf("relay=") != -1 ? decodeURIComponent(para1.split("relay=")[1].split("&")[0]) : ""; // Tham số relay nút để thực hiện chức năng chuỗi proxy
+var PUOT = mark0 && para1.indexOf("uot=") != -1 && version >= 665? para1.split("uot=")[1].split("&")[0] : ""; // Đã bật nút udp-over-tcp
+var PcheckU = mark0 && para1.indexOf("checkurl=") != -1 ? decodeURIComponent(para1.split("checkurl=")[1].split("&")[0]) : ""; // Tham số nút server_check_url
 typeQ = PRelay!=""? "server":typeQ
 var typec="" //check result type
-var Pflow=mark0 && para1.indexOf("flow=") != -1 ? para1.split("flow=")[1].split("&")[0] : 0; // 流量时间等参数
-var PProfile = mark0 && para1.indexOf("profile=") != -1 ? para1.split("profile=")[1].split("&")[0] : 0; // 通过URL-Scheme导入完整配置参数
-var Palpn = mark0 && para1.indexOf("alpn=") != -1 && version >= 712? para1.split("alpn=")[1].split("&")[0] : ""; // over-tls 类型，alpn参数
-var Pobfs = mark0 && para1.indexOf("obfs=") != -1 && version >= 770? para1.split("obfs=")[1].split("&")[0] : ""; // 指定特殊情况下的 obfs=xx-http 类型
+var Pflow=mark0 && para1.indexOf("flow=") != -1 ? para1.split("flow=")[1].split("&")[0] : 0; // Các thông số như thời gian dòng chảy
+var PProfile = mark0 && para1.indexOf("profile=") != -1 ? para1.split("profile=")[1].split("&")[0] : 0; // Nhập thông số cấu hình đầy đủ thông qua URL-Scheme
+var Palpn = mark0 && para1.indexOf("alpn=") != -1 && version >= 712? para1.split("alpn=")[1].split("&")[0] : ""; // Kiểu over-tls, tham số alpn
+var Pobfs = mark0 && para1.indexOf("obfs=") != -1 && version >= 770? para1.split("obfs=")[1].split("&")[0] : ""; // Chỉ định trường hợp đặc biệt loại obfs=xx-http
 var Psession =  mark0 && para1.indexOf("tsession=") != -1 && version >= 771? para1.split("tsession=")[1].split("&")[0] : "";//tls-no-session-ticket and tls-no-session-reuse
-// 0/1 代表关闭 session-ticket/reuse，2 表示全部关闭。
+// 0/1 Đóng session-ticket/reuse, 2 là đóng tất cả.
 
-var RegoutList= [] ;//用于 regout参数删选提醒
-// URL-Scheme 增加配置
+var RegoutList= [] ;//Sử dụng regout để xóa nhắc nhở
+// URL-Scheme Tăng cấu hình
 var ADDres = `quantumult-x:///add-resource?remote-resource=url-encoded-json`
 var RLink = `{
   "server_remote": [
@@ -259,7 +259,7 @@ function Profile_Handle() {
 }
 
 //
-//流量信息
+//Thông tin giao thông
 //{bytes_used: 1073741824, bytes_remaining: 2147483648, expire_date: 1653193966}}
 var Finfo={}
 if (Pflow!=0) {
@@ -273,7 +273,7 @@ if (Pflow!=0) {
   Finfo = BJson
 }
 
-//花漾字 pattern
+//Hoa Dạng chữ pattern
 var pat=[]
 pat[0] = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","k","r","s","t","u","v","w","x","y","z"]
 pat[1] = ["🅰","🅱","🅲","🅳","🅴","🅵","🅶","🅷","🅸","🅹","🅺","🅻","🅼","🅽","🅾","🅿","🅺","🆁","🆂","🆃","🆄","🆅","🆆","🆇","🆈","🆉"]
@@ -285,7 +285,7 @@ pat[6] = ["𝕒","𝕓","𝕔","𝕕","𝕖","𝕗","𝕘","𝕙","𝕚","𝕛",
 pat[7] = ["ᵃ","ᵇ","ᶜ","ᵈ","ᵉ","ᶠ","ᵍ","ʰ","ⁱ","ʲ","ᵏ","ˡ","ᵐ","ⁿ","ᵒ","ᵖ","ᵒ⃒","ʳ","ˢ","ᵗ","ᵘ","ᵛ","ʷ","ˣ","ʸ","ᙆ"]
 pat[8] = ["ᴬ","ᴮ","ᒼ","ᴰ","ᴱ","ᶠ","ᴳ","ᴴ","ᴵ","ᴶ","ᴷ","ᴸ","ᴹ","ᴺ","ᴼ","ᴾ","ᴼ̴","ᴿ","ˢ","ᵀ","ᵁ","ᵛ","ᵂ","ˣ","ʸ","ᙆ"]
 
-// 花式数字
+// những con số lạ mắt
 var patn=[]
 patn[0] = ["0","1","2","3","4","5","6","7","8","9"]
 patn[1] = [ '⓪', '①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧', '⑨' ]
@@ -297,7 +297,7 @@ patn[6] = [ '₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉'
 patn[7] = ["𝟎","𝟏","𝟐","𝟑","𝟒","𝟓","𝟔","𝟳","𝟖","𝟗"]
 patn[8] = ["𝟶","𝟷","𝟸","𝟹","𝟺","𝟻","𝟼","𝟽","𝟾","𝟿"]
 
-//避免json undefined错误的 函数
+//Chức năng tránh lỗi không xác định json
 const getValue = (fn, defaultVaule) => {
   try {
     return fn();
@@ -307,11 +307,11 @@ const getValue = (fn, defaultVaule) => {
 };
 
 var type0=""
-//flag=1,2,3分别为 server、rewrite、rule 类型
+//flag=1,2,3 tương ứng server、rewrite、rule kiểu
 var flag = 1
 
 function Parser() {
-  type0 = Type_Check(content0); //  类型判断
+  type0 = Type_Check(content0); //  Đánh giá kiểu
   //$notify(type0)
   if (type0 != "web" && type0 != "wrong-field" && type0 != "JS-0"){
     try {
@@ -323,17 +323,17 @@ function Parser() {
       
     } catch (err) {
       if(Perror == 0) {
-      $notify("❌ 解析出现错误", "⚠️ 请点击通知，发送订阅链接进行反馈", err, bug_link);
+      $notify("❌ Đã xảy ra lỗi khi phân tích cú pháp", "⚠️ Hãy nhấn vào thông báo để gửi link đăng ký nhận phản hồi", err, bug_link);
     }
     }
   } else if (type0 == "wrong-field"){
-    if (version >= 670 && typec!="") { //尝试跳转到正确类型
-      RLink0[Field[typec]].push($resource.link+", opt-parser=true, tag=下次添加资源🉑️长点❤️8⃣️") //  跳转URI-Scheme
+    if (version >= 670 && typec!="") { //Cố gắng chuyển sang đúng loại
+      RLink0[Field[typec]].push($resource.link+", opt-parser=true, tag=Hãy thêm tài nguyên vào lần sau🉑️Làm cho nó dài hơn❤️8⃣️") //  跳转URI-Scheme
       var flink = ADDRes.replace(/url-encoded-json/,encodeURIComponent(JSON.stringify(RLink0)))
       const bug_linkx = { "open-url": flink, "media-url": "https://shrtm.nu/obcB" } // bug linkx
-    $notify( "⚠️ 请点击通知跳转尝试添加到正确类型中","❌ 检测类型["+typec+"]"+"与填入类型"+"["+typeQ+"]冲突", "如果跳转添加仍旧失败，请发送链接反馈解析器bot\n"+$resource.link, bug_linkx)
-    } else {//旧版本
-    $notify("❌ 检测类型「"+typec+" 」"+"与目标类型"+" 「"+typeQ+" 」冲突", "⚠️ 请自行检查链接内容，或点击通知发送链接进行反馈", $resource.link, bug_link)
+    $notify( "⚠️ Vui lòng nhấp vào thông báo để nhảy để thử thêm vào đúng loại","❌ Loại phát hiện["+typec+"]"+"với kiểu điền"+"["+typeQ+"]xung đột", "Nếu thêm vào bước nhảy vẫn không thành công, hãy gửi bộ phân tích phản hồi liên kếtbot\n"+$resource.link, bug_linkx)
+    } else {//Phiên bản cũ
+    $notify("❌ Loại phát hiện「"+typec+" 」"+"với loại mục tiêu"+" 「"+typeQ+" 」xung đột", "⚠️ Vui lòng tự kiểm tra nội dung link, hoặc bấm vào thông báo gửi link để phản hồi", $resource.link, bug_link)
     }
     total=""
   } else {
@@ -350,18 +350,18 @@ if (typeof($resource)!=="undefined" && PProfile == 0) {
     Profile_Handle()
   } catch (err) {
     if(Perror == 0) {
-      $notify("❌ 解析出现错误", "⚠️ 请点击通知，发送订阅链接进行反馈", err, bug_link);
+      $notify("❌ Đã xảy ra lỗi khi phân tích cú pháp", "⚠️ Hãy nhấn vào thông báo để gửi link đăng ký nhận phản hồi", err, bug_link);
     }
     }
   openlink = {"open-url": ADDres}
-  $notify("⚠️请忽略报错提示, 点击此通知跳转", "添加配置中的有效远程资源👇 ["+ PProfile+"]", ADDres,openlink)
+  $notify("⚠️Vui lòng bỏ qua thông báo lỗi và nhấp vào thông báo này để nhảy", "Thêm tài nguyên từ xa hợp lệ vào cấu hình👇 ["+ PProfile+"]", ADDres,openlink)
   total = ProfileInfo[typeQ]
   $done({content:total})
 }
 
 
 /**
-# 以下为具体的 function
+# Sau đây là cụ thể function
 
 */
 
@@ -369,14 +369,14 @@ function ParseUnknown(cnt){
   try {
     cnt = JSON.parse(cnt)
     if(cnt) {
-      $notify("⚠️ 链接返回内容并非有效订阅"+ "⟦" + subtag + "⟧","⁉️ 请自行检查原始链接，返回内容 👇️👇️",JSON.stringify(cnt), bug_link)
+      $notify("⚠️ Nội dung được liên kết trả về không phải là đăng ký hợp lệ"+ "⟦" + subtag + "⟧","⁉️ Vui lòng tự kiểm tra link gốc và trả lại nội dung 👇️👇️",JSON.stringify(cnt), bug_link)
     }
     
   } catch(err) {
     if (!/error|block|invalid|support/.test(cnt.toLowerCase())) {
-    $notify("😭 未能识别订阅 " + "⟦" + subtag + "⟧ 的内容",  "⚠️ 将尝试直接导入Quantumult X \n 如认为是 BUG, 请点通知跳转并 [发送链接] 反馈", "订阅返回内容: 👇 \n"+cnt, bug_link);
+    $notify("😭 Đăng ký không được công nhận " + "⟦" + subtag + "⟧ Nội dung",  "⚠️ Sẽ cố gắng nhập trực tiếp Quantumult X \n Nếu bạn nghĩ nó là BUG, Vui lòng nhấp vào thông báo để nhảy và [Gửi link] Phản hồi", "Nội dung trả lại đăng ký: 👇 \n"+cnt, bug_link);
   } else {
-    $notify("💢 ⟦" + subtag + "⟧ 返回内容无效",  "😠 请自行检查订阅，不要跑来反馈", "订阅返回内容: 👇 \n"+cnt, plink0);
+    $notify("💢 ⟦" + subtag + "⟧ Nội dung trả về không hợp lệ",  "😠 Vui lòng tự kiểm tra đăng ký của bạn và không gửi phản hồi", "Nội dung trả lại đăng ký: 👇 \n"+cnt, plink0);
   }
 }
 }
@@ -414,11 +414,11 @@ function ResourceParse() {
     total = Rule_Handle(content0.split("\n").map(item=>item.trim()).filter(Boolean), Pout0, Pin0).filter(Boolean);
     if (Preg && total.length!=0) { // 正则筛选规则 filter
     total = total.map(Regex).filter(Boolean) 
-    RegCheck(total, "分流引用", "regex", Preg)
+    RegCheck(total, "Tham chiếu chuyển hướng", "regex", Preg)
   } 
     if (Pregout && total.length!=0) { // 正则删除规则 filter
     total = total.map(RegexOut).filter(Boolean)
-    RegCheck(total, "分流引用", "regout", Pregout)
+    RegCheck(total, "Tham chiếu chuyển hướng", "regout", Pregout)
   }
     if (Preplace) { total = ReplaceReg(total, Preplace) }
     if (Ppolicyset) {total = policy_sets(total, Ppolicyset)}
@@ -426,14 +426,14 @@ function ResourceParse() {
     total = total.length<100? total.filter( (ele,pos)=>total.indexOf(ele) == pos) : total
     total = total.join("\n")
   } else if (content0.trim() == "") {
-    $notify("‼️ 引用" + "⟦" + subtag + "⟧" + " 返回內容为空", "⁉️ 点通知跳转以确认链接是否失效", para.split("#")[0], nan_link);
+    $notify("‼️ 引用" + "⟦" + subtag + "⟧" + " Nội dung trả về trống", "⁉️ Nhấp vào thông báo để nhảy để xác nhận xem liên kết có hợp lệ không", para.split("#")[0], nan_link);
     flag = 0;
   } else if (type0 == "sub-http") {
     let url = VCheck(String(Base64.decode(content0.split("sub://")[1].split("#")[0])+", opt-parser=true, tag="+(new Date()).getTime()))
      RLink = RLink.replace("sremoteposition",url).replace("fremoteposition","").replace("rremoteposition","")
     let ADDres0 = ADDres.replace("url-encoded-json",encodeURIComponent(RLink))
     openlink = {"open-url": ADDres0}
-    $notify("⚠️ 该链接为节点订阅, 请点击此通知跳转添加", url, ADDres0,openlink)
+    $notify("⚠️ Liên kết này dành cho đăng ký nút, vui lòng nhấp vào thông báo này để chuyển sang thêm", url, ADDres0,openlink)
     flag = -1
     total = ""
   } else if (type0 == "unknown") {
@@ -443,7 +443,7 @@ function ResourceParse() {
     PProfile = "111" //默认添加所有部分
     Profile_Handle()
     openlink = {"open-url": ADDres}
-    $notify("⚠️ 该链接为完整配置文件, 请点击此通知跳转", "添加配置中的有效远程资源👇 ["+ PProfile+"]", ADDres, openlink)
+    $notify("⚠️ Liên kết này là tệp cấu hình hoàn chỉnh, vui lòng nhấp vào thông báo này để chuyển", "Thêm tài nguyên từ xa hợp lệ vào cấu hình👇 ["+ PProfile+"]", ADDres, openlink)
     flag = -1;
     total = ""
   } else if (type0 == "JS-0") {
@@ -458,9 +458,9 @@ function ResourceParse() {
     }
     if (Pin0 || Pout0) { total = Filter(total, Pin0, Pout0) } // in & out 
     if (Preg) { total = total.map(Regex).filter(Boolean)  // regex
-      RegCheck(total, "节点订阅", "regex", Preg)} 
+      RegCheck(total, "Đăng ký nút", "regex", Preg)} 
     if (Pregout) { total = total.map(RegexOut).filter(Boolean)  // regex out
-      RegCheck(total, "节点订阅", "regout", Pregout)} 
+      RegCheck(total, "Đăng ký nút", "regout", Pregout)} 
     if (Psfilter) { total = FilterScript(total, Psfilter) }
     if (Prrname) {
       Prn = Prrname;
@@ -494,16 +494,16 @@ function ResourceParse() {
       //$notify("before","haha",total)
       total = TagCheck_QX(total).join("\n") //节点名检查
       if (PUOT==1) { total = total.split("\n").map(UOT).join("\n")}
-      if (Pcnt == 1) {$notify("⟦" + subtag + "⟧"+"解析后最终返回内容" , "节点数量: " +total.split("\n").length, total)}
+      if (Pcnt == 1) {$notify("⟦" + subtag + "⟧"+"Nội dung cuối cùng trả về sau khi phân tích cú pháp" , "Số lượng nút: " +total.split("\n").length, total)}
       total = PRelay==""? Base64.encode(total) : ServerRelay(total.split("\n"),PRelay) //强制节点类型 base64 加密后再导入 Quantumult X, 如果是relay，则转换成分流类型
       if(Pflow==1) {
-        //$notify("添加流量信息","xxx","xxxx")
+        //$notify("Thêm thông tin giao thông","xxx","xxxx")
         $done({ content: total, info: {bytes_used: 3073741824, bytes_remaining: 2147483648, expire_date: 1854193966}});
       //$notify("done?","strange")
       } else { $done({ content: total });}
     } else {
       if(Perror == 0) {
-      $notify("❓❓ 友情提示 ➟ "+ "⟦" + subtag + "⟧", "⚠️⚠️ 解析后无有效内容", "🚥🚥 请自行检查相关参数, 或者点击通知跳转并发送链接反馈", bug_link)
+      $notify("❓❓ lời nhắc nhở thân thiện ➟ "+ "⟦" + subtag + "⟧", "⚠️⚠️ Không có nội dung hợp lệ sau khi phân tích cú pháp", "🚥🚥 Vui lòng tự kiểm tra các thông số liên quan hoặc nhấp vào thông báo để nhảy và gửi phản hồi liên kết", bug_link)
     }
       total = errornode
       $done({ content: errornode })
@@ -515,7 +515,7 @@ function ResourceParse() {
     total = content0
     $done({ content: content0 })
   } 
-  if (Pcnt == 1 && flag !=1) {$notify("解析后最终返回内容" , "总数量： " +total.split("\n").length, total)}
+  if (Pcnt == 1 && flag !=1) {$notify("Nội dung cuối cùng trả về sau khi phân tích cú pháp" , "Tổng số lượng： " +total.split("\n").length, total)}
   return total
   
 }
@@ -524,24 +524,24 @@ function ResourceParse() {
 function SubFlow() {
   if (Pinfo == 1 && subinfo) {
     var sinfo = subinfo.replace(/ /g, "").toLowerCase();
-    var total = "总流量: " + (parseFloat(sinfo.split("total=")[1].split(",")[0]) / (1024 ** 3)).toFixed(2) + "GB";
-    var usd = "已用流量: " + ((parseFloat(sinfo.indexOf("upload")!=-1?sinfo.split("upload=")[1].split(",")[0]:"0") + parseFloat(sinfo.split("download=")[1].split(",")[0])) / (1024 ** 3)).toFixed(2) + "GB"
-    var left = "剩余流量: " + ((parseFloat(sinfo.split("total=")[1].split(",")[0]) / (1024 ** 3)) - ((parseFloat(sinfo.indexOf("upload")!=-1?sinfo.split("upload=")[1].split(",")[0]:"0") + parseFloat(sinfo.split("download=")[1].split(",")[0])) / (1024 ** 3))).toFixed(2) + "GB"
+    var total = "Tổng lưu lượng truy cập: " + (parseFloat(sinfo.split("total=")[1].split(",")[0]) / (1024 ** 3)).toFixed(2) + "GB";
+    var usd = "Lưu lượng truy cập đã sử dụng: " + ((parseFloat(sinfo.indexOf("upload")!=-1?sinfo.split("upload=")[1].split(",")[0]:"0") + parseFloat(sinfo.split("download=")[1].split(",")[0])) / (1024 ** 3)).toFixed(2) + "GB"
+    var left = "Lưu lượng còn lại: " + ((parseFloat(sinfo.split("total=")[1].split(",")[0]) / (1024 ** 3)) - ((parseFloat(sinfo.indexOf("upload")!=-1?sinfo.split("upload=")[1].split(",")[0]:"0") + parseFloat(sinfo.split("download=")[1].split(",")[0])) / (1024 ** 3))).toFixed(2) + "GB"
     if (sinfo.indexOf("expire=") != -1) {
       var epr = new Date(parseFloat(sinfo.split("expire=")[1].split(",")[0]) * 1000);
       var year = epr.getFullYear();  // 获取完整的年份(4位,1970)
       var mth = epr.getMonth() + 1 < 10 ? '0' + (epr.getMonth() + 1) : (epr.getMonth() + 1);  // 获取月份(0-11,0代表1月,用的时候记得加上1)
       var day = epr.getDate() < 10 ? "0" + (epr.getDate()) : epr.getDate();
-      epr = "过期时间: " + year + "-" + mth + "-" + day
+      epr = "Hết hạn: " + year + "-" + mth + "-" + day
     } else {
       epr = ""; //"过期时间: ✈️ 未提供該信息" //没过期时间的显示订阅链接
     }
     var message = total + "\n" + usd + ", " + left;
     ntf_flow = 1;
-    $notify("流量信息: ⟦" + subtag + "⟧", epr, message, subinfo_link)
+    $notify("Thông tin giao thông: ⟦" + subtag + "⟧", epr, message, subinfo_link)
   }
 //  } else if (Pinfo ==1){
-//    $notify("流量信息: ⟦" + subtag + "⟧", "", "⚠️ 该订阅链接未返回任何流量信息", subinfo_link)
+//    $notify("Thông tin giao thông: ⟦" + subtag + "⟧", "", "⚠️ Liên kết đăng ký không trả về bất kỳ thông tin giao thông nào", subinfo_link)
 //  }
 }
 
@@ -551,24 +551,24 @@ function flowcheck(cnt) {
         var item = cnt[i];
         var nl = item.slice(item.indexOf("tag"))
         var nm = nl.slice(nl.indexOf("=") + 1)
-        if (item.indexOf("剩余流量") != -1) {
+        if (item.indexOf("Lưu lượng còn lại") != -1) {
             flow = nm
-        } else if (item.indexOf("期时间") != -1) {
+        } else if (item.indexOf("Thời gian") != -1) {
             exptime = nm
         }
     }
-  flow = flow? flow:"⚠️ 该订阅未返回任何流量信息"
-  exptime = exptime? exptime:"⚠️ 该订阅未返回套餐时间信息"
-    if (flow != "") { $notify("流量信息: ⟦" + subtag + "⟧", flow, exptime, subinfo_link1) }
+  flow = flow? flow:"⚠️ Đăng ký này không trả lại bất kỳ thông tin giao thông nào"
+  exptime = exptime? exptime:"⚠️ Đăng ký này không trả về thông tin thời gian gói"
+    if (flow != "") { $notify("Thông tin giao thông: ⟦" + subtag + "⟧", flow, exptime, subinfo_link1) }
 }
 
 // regex 后的检查
 function RegCheck(total, typen, paraname,regpara) {
   if(total.length == 0){ 
-    $notify("‼️ " + typen + "  ➟ " + "⟦" + subtag + "⟧", "⛔️ 筛选正则: " + paraname + "=" + regpara, "⚠️ 筛选后剩余项为 0️⃣ , 请检查正则参数及原始链接", nan_link)
+    $notify("‼️ " + typen + "  ➟ " + "⟦" + subtag + "⟧", "⛔️ Lọc thường xuyên: " + paraname + "=" + regpara, "⚠️ Các mục còn lại sau khi lọc là 0️⃣ , Vui lòng kiểm tra thông số thông thường và link gốc", nan_link)
   }else if((typen != "节点订阅" && Pntf0 !=0) || (typen == "节点订阅" && Pntf0 ==1)){
     var nolist = total.length <= 10 ? emojino[total.length] : total.length
-    $notify("🤖 " + typen + "  ➟ " + "⟦" + subtag + "⟧", "⛔️ 筛选正则: " + paraname + "=" + regpara, "⚠️ 筛选后剩余以下" + nolist + "个匹配项 \n ⨷ " + total.join("\n ⨷ "), sub_link)
+    $notify("🤖 " + typen + "  ➟ " + "⟦" + subtag + "⟧", "⛔️ Lọc thường xuyên: " + paraname + "=" + regpara, "⚠️ Phần còn lại sau khi lọc" + nolist + "Khớp \n ⨷ " + total.join("\n ⨷ "), sub_link)
   }
 }
 //判断订阅类型
@@ -594,7 +594,7 @@ function Type_Check(subs) {
     const ProfileCheck = (item) => subs.indexOf(item) != -1; //是否为quanx配置文件
     var subsn = subs.split("\n")
     if ( (subs.indexOf(html) != -1 || subs.indexOf("doctype html") != -1) && link0.indexOf("github.com" == -1)) {
-      $notify("‼️ 该链接返回为无效网页内容"+ " ➟ " + "⟦" + subtag + "⟧", "⁉️ 点通知跳转以确认链接是否失效\n"+link0, "返回内容如下⬇️：\n"+subs, nan_link);
+      $notify("‼️ Liên kết trả về nội dung trang web không hợp lệ"+ " ➟ " + "⟦" + subtag + "⟧", "⁉️ Thông báo điểm Nhảy để xác nhận liên kết bị hỏng\n"+link0, "Nội dung trả về như sau:⬇️：\n"+subs, nan_link);
       type = "web";
     } else if (typeU == "nodes" && typeQ=="server") { //指定为节点类型
       type = (typeQ == "unsupported" || typeQ =="server")? "Subs":"wrong-field"
@@ -664,7 +664,7 @@ function Type_Check(subs) {
       type = "profile"  //默认配置类型
     }else if (/\.js/.test(link0)) { // xjb添加js脚本的行为
       Perror = 1 ; // 无需反馈
-      $notify("⚠️ 你导入的链接内容为 JS 脚本","🚥 脚本内未有重写规则，无法解析使用", " 请⚠️不要⚠️跑来解析器🤖️反馈 \n"+link0)
+      $notify("⚠️ Nội dung của liên kết bạn đã nhập là JS kịch bản","🚥 Không có quy tắc viết lại trong tập lệnh và không thể phân tích cú pháp và sử dụng.", " Vui lòng ⚠️ đừng ⚠️ đến với trình phân tích cú pháp 🤖️ để nhận phản hồi \n"+link0)
       type = "JS-0"
     } else if (typeQ =="server" && subs.length>100) { // 一些未知的b64 encode server case
       typec="server-b64-unknown"
@@ -672,7 +672,7 @@ function Type_Check(subs) {
     } //else if (typeQ == "URI")
   // 用于通知判断类型，debug
   if(typeU == "X"){
-    $notify("该链接判定类型",type+" : " +typec, subs)
+    $notify("Kiểu xác định liên kết",type+" : " +typec, subs)
   }
   //$notify(type)
     return type
@@ -701,7 +701,7 @@ function TagCheck_QX(content) {
             }
             var ni = 0
             while (nmlist.indexOf(nm) != -1) { //重名情形
-              //$notify("重名",nm,nmlist)
+              //$notify("Tên trùng lặp",nm,nmlist)
                 nm = ni==0? nm+ NoReplace(ni+1):nm.split(" ").slice(0,nm.split(" ").length-2).join(" ") + NoReplace(ni+1)
                 item = Pdel != 1 ? item.split("tag")[0] + "tag=" + nm : ""
                 ni = ni + 1
@@ -728,14 +728,14 @@ function TagCheck_QX(content) {
     }
     if (nulllist.length >= 1) {
         no = nulllist.length <= 10 ? emojino[nulllist.length] : nulllist.length;
-        $notify("⚠️ 引用" + "⟦" + subtag + "⟧" + " 内有" + no + "个空节点名 ", "✅ 已将节点“类型+IP”设为节点名", " ⨁ " + nulllist.join("\n ⨁ "), nan_link)
+        $notify("⚠️ Trích dẫn" + "⟦" + subtag + "⟧" + " chứa" + no + "Không điểm danh ", "✅ Nút đã được“kiểu+IP”Đặt làm tên nút", " ⨁ " + nulllist.join("\n ⨁ "), nan_link)
     }
     if (duplist.length >= 1) {
         no = duplist.length <= 10 ? emojino[duplist.length] : duplist.length;
       if (Pdel!=1 && Pntf0 != 0){
-        $notify("⚠️ 引用" + "⟦" + subtag + "⟧" + " 内有" + no + "个名字重复的节点 ", "✅ 已添加数字区分, 删除请添加参数 del=1:", " ⨁ " + duplist.join("\n ⨁ "), nan_link)
+        $notify("⚠️ Trích dẫn" + "⟦" + subtag + "⟧" + " chứa" + no + "các nút có tên trùng lặp ", "✅ Đã thêm phân biệt số, vui lòng thêm tham số cần xóa del=1:", " ⨁ " + duplist.join("\n ⨁ "), nan_link)
       } else if (Pdel ==1 && Pntf0 != 0) {
-        $notify("⚠️ 引用" + "⟦" + subtag + "⟧" + " 内有" + no + "个名字重复的节点 ", "❌️ 已全部删除，如需保留请去除参数 del=1:", " ⨁ " + duplist.join("\n ⨁ "), nan_link)
+        $notify("⚠️ Trích dẫn" + "⟦" + subtag + "⟧" + " chứa" + no + "các nút có tên trùng lặp ", "❌️ Tất cả đã bị xóa. Nếu bạn muốn giữ lại, vui lòng loại bỏ các tham số. del=1:", " ⨁ " + duplist.join("\n ⨁ "), nan_link)
       }
     }
     return Nlist
@@ -927,9 +927,9 @@ function ToRaw(cnt) {
   cnt = cnt.split("\n").map(rawtest).filter(Boolean).join("\n")
   var rawlink = link0.replace("github.com","raw.githubusercontent.com").replace("/blob","")
   if (cnt) {
-    $notify( "⚠️⚠️ 将尝试解析该资源" + "⟦" + subtag + "⟧" , "🚥 请正确使用GitHub的 raw 链接" , "❌ 你的链接："+link0+"\n✅ 正确链接："+rawlink, {"open-url":rawlink})
+    $notify( "⚠️⚠️ sẽ cố gắng phân tích tài nguyên" + "⟦" + subtag + "⟧" , "🚥 Vui lòng sử dụng chính xác liên kết thô của GitHub" , "❌ liên kết của bạn："+link0+"\n✅ Liên kết đúng："+rawlink, {"open-url":rawlink})
   } else if(content0.indexOf("gridcell")!=-1) {
-    $notify( "⚠️⚠️ 解析该资源" + " ⟦" + subtag + "⟧ 失败" , "🚥 你的链接似乎是目录，而不是文件" , "❌ 你的链接："+link0, {"open-url":link0})
+    $notify( "⚠️⚠️ Phân tích tài nguyên" + " ⟦" + subtag + "⟧ thất bại" , "🚥 Liên kết của bạn có vẻ là một thư mục, không phải một tập tin" , "❌ liên kết của bạn："+link0, {"open-url":link0})
   }
   return cnt
 }
@@ -1155,7 +1155,7 @@ function SCP2QX(subs) {
         nrw.push(subs[i])
       }
     } catch (err) {
-      $notify("❌️解析此条时出现错误，已忽略",subs[i],err)
+      $notify("❌️Đã xảy ra lỗi khi phân tích mục này và đã bị bỏ qua.",subs[i],err)
     }
   }
   return nrw
@@ -1203,26 +1203,26 @@ function Rewrite_Filter(subs, Pin, Pout,Preg,Pregout) {
         no1write = Nlist.length <= 10 ? emojino[Nlist.length] : Nlist.length
         if (Pin0 && no1write != " 0️⃣ ") { //有 in 参数就通知保留项目
           if (Pout!=0) {
-            $notify("🤖 " + "重写引用  ➟ " + "⟦" + subtag + "⟧", "⛔️ 筛选参数: " + pfi + pfo, "☠️ 重写 rewrite 中保留以下" + no1write + "个匹配项:" + "\n ⨷ " + Nlist.join("\n ⨷ "), rwrite_link)
+            $notify("🤖 " + "Viết lại trích dẫn  ➟ " + "⟦" + subtag + "⟧", "⛔️ Lọc thông số: " + pfi + pfo, "☠️ viết lại rewrite Những điều sau đây được bảo lưu trong" + no1write + "Khớp:" + "\n ⨷ " + Nlist.join("\n ⨷ "), rwrite_link)
           }
         } else if (dwrite.length > 0) {
           if (Pout0!=0) {
-            $notify("🤖 " + "重写引用  ➟ " + "⟦" + subtag + "⟧", "⛔️ 筛选参数: " + pfi + pfo, "☠️ 重写 rewrite 中已禁用以下" + nowrite + "个匹配项:" + "\n ⨷ " + dwrite.join("\n ⨷ "), rwrite_link)
+            $notify("🤖 " + "Viết lại trích dẫn  ➟ " + "⟦" + subtag + "⟧", "⛔️ Lọc thông số: " + pfi + pfo, "☠️ viết lại rewrite Những điều sau đây được bảo lưu trong" + nowrite + "Khớp:" + "\n ⨷ " + dwrite.join("\n ⨷ "), rwrite_link)
           }
         }
     }
     if (Nlist.length == 0 ) { 
       if ((Pin0 || Pout0 || Phin0 || Phout0 || Pregout || Preg)) {
-        $notify("🤖 " + "重写引用  ➟ " + "⟦" + subtag + "⟧", "⛔️ 筛选参数: " + pfi + pfo, "⚠️ 筛选后剩余rewrite规则数为 0️⃣ 条, 请检查参数及原始链接", nan_link) 
+        $notify("🤖 " + "Viết lại trích dẫn  ➟ " + "⟦" + subtag + "⟧", "⛔️ Tham số lọc: " + pfi + pfo, "⚠️ Số quy tắc viết lại còn lại sau khi lọc là 0️⃣, vui lòng kiểm tra thông số và link gốc", nan_link) 
       } else {
-        $notify("🤖 " + "重写引用  ➟ " + "⟦" + subtag + "⟧", "⛔️ 解析后 rewrite 规则数为 0️⃣ 条 " , "⚠️ 请检查参数及原始链接内容", nan_link) 
+        $notify("🤖 " + "Viết lại trích dẫn  ➟ " + "⟦" + subtag + "⟧", "⛔️ Sau khi phân tích cú pháp, số quy tắc viết lại là 0️⃣ " , "⚠️ Vui lòng kiểm tra thông số và nội dung link gốc", nan_link) 
       
       }
     }
     if(Preg){ Nlist = Nlist.map(Regex).filter(Boolean) // regex to filter rewrites
-      RegCheck(Nlist, "重写引用", "regex", Preg) }
+      RegCheck(Nlist, "Viết lại trích dẫn", "regex", Preg) }
     if(Pregout){ Nlist = Nlist.map(RegexOut).filter(Boolean) // regex to delete rewrites
-      RegCheck(Nlist, "重写引用", "regout", Pregout) }
+      RegCheck(Nlist, "Viết lại trích dẫn", "regout", Pregout) }
     if (hostname != "") { Nlist.push(hostname) }
     Nlist =Phide ==1? Nlist : [...dwrite,...Nlist]
     return Nlist
@@ -1259,19 +1259,19 @@ function HostNamecheck(content, parain, paraout) {
             var noname = dname.length <= 10 ? emojino[dname.length] : dname.length
             var no1name = nname.length <= 10 ? emojino[nname.length] : nname.length
             if (parain && no1name != " 0️⃣ ") {
-                $notify("🤖 " + "重写引用  ➟ " + "⟦" + subtag + "⟧", "⛔️ 筛选参数: " + pfihn + pfohn, "☠️ 主机名 hostname 中已保留以下" + no1name + "个匹配项:" + "\n ⨷ " + nname.join(","), rwhost_link)
+                $notify("🤖 " + "Viết lại trích dẫn  ➟ " + "⟦" + subtag + "⟧", "⛔️ Lọc tham số: " + pfihn + pfohn, "☠️ Tên máy chủ hostname Những điều sau đây đã được giữ lại" + no1name + "Khớp:" + "\n ⨷ " + nname.join(","), rwhost_link)
             } else if (dname.length > 0) {
-                $notify("🤖 " + "重写引用  ➟ " + "⟦" + subtag + "⟧", "⛔️ 筛选参数: " + pfihn + pfohn, "☠️ 主机名 hostname 中已删除以下" + noname + "个匹配项:" + "\n ⨷ " + dname.join(","), rwhost_link)
+                $notify("🤖 " + "Viết lại trích dẫn  ➟ " + "⟦" + subtag + "⟧", "⛔️ Lọc tham số: " + pfihn + pfohn, "☠️ Tên máy chủ hostname Những điều sau đây đã được giữ lại" + noname + "Khớp:" + "\n ⨷ " + dname.join(","), rwhost_link)
             }
         }
     }
     if (nname.length == 0) {
-        $notify("🤖 " + "重写引用  ➟ " + "⟦" + subtag + "⟧", "⛔️ 筛选参数: " + pfihn + pfohn, "⚠️ 主机名 hostname 中剩余 0️⃣ 项, 请检查参数及原始链接", nan_link)
+        $notify("🤖 " + "Viết lại trích dẫn  ➟ " + "⟦" + subtag + "⟧", "⛔️ Lọc tham số: " + pfihn + pfohn, "⚠️ Tên máy chủ hostname Còn lại 00️⃣ Mục, vui lòng kiểm tra các tham số và liên kết gốc", nan_link)
     }
     if(Preg){ nname = nname.map(Regex).filter(Boolean)
-      RegCheck(nname, "主机名hostname","regex", Preg) }
+      RegCheck(nname, "Tên máy chủ hostname","regex", Preg) }
     if(Pregout){ nname = nname.map(RegexOut).filter(Boolean)
-      RegCheck(nname, "主机名hostname", "regout", Pregout) }
+      RegCheck(nname, "Tên máy chủ hostname", "regout", Pregout) }
     hname = "hostname=" + nname.join(", ");
     return hname
 }
@@ -1326,20 +1326,20 @@ function Rule_Handle(subs, Pout, Pin) {
         }//for cnt
         var no = dlist.length <= 10 ? emojino[dlist.length] : dlist.length
         if (dlist.length > 0) {
-            if (Pntf0 != 0) { $notify("🤖 " + "分流引用  ➟ " + "⟦" + subtag + "⟧", "⛔️ 禁用: " + Tout, "☠️ 已禁用以下" + no + "条匹配规则:" + "\n ⨷ " + dlist.join("\n ⨷ "), rule_link) }
-        } else { $notify("🤖 " + "分流引用  ➟ " + "⟦" + subtag + "⟧", "⛔️ 禁用: " + Tout, "⚠️ 未发现任何匹配项, 请检查参数或原始链接", nan_link) }
+            if (Pntf0 != 0) { $notify("🤖 " + "Tham chiếu chuyển hướng  ➟ " + "⟦" + subtag + "⟧", "⛔️ Vô hiệu hóa: " + Tout, "☠️ Các mục sau đây bị vô hiệu hóa" + no + "quy tắc phù hợp:" + "\n ⨷ " + dlist.join("\n ⨷ "), rule_link) }
+        } else { $notify("🤖 " + "Tham chiếu chuyển hướng  ➟ " + "⟦" + subtag + "⟧", "⛔️ Vô hiệu hóa: " + Tout, "⚠️ Không tìm thấy kết quả trùng khớp, vui lòng kiểm tra thông số hoặc link gốc", nan_link) }
         if (Tin != "" && Tin != null) {  //有 in 跟 out 参数时
             if (nlist.length > 0) {
                 var noin0 = nlist.length <= 10 ? emojino[nlist.length] : nlist.length
                 if (Pntf0 != 0) {
-                    $notify("🤖 " + "分流引用  ➟ " + "⟦" + subtag + "⟧", "✅ 保留:" + Tin, "🎯 已保留以下 " + noin0 + "条匹配规则:" + "\n ⨁ " + nlist.join("\n ⨁ "), rule_link)
+                    $notify("🤖 " + "Tham chiếu chuyển hướng  ➟ " + "⟦" + subtag + "⟧", "✅ dự trữ:" + Tin, "🎯 Những điều sau đây đã được bảo lưu " + noin0 + "quy tắc phù hợp:" + "\n ⨁ " + nlist.join("\n ⨁ "), rule_link)
                 }
             } else {
-                $notify("🤖 " + "分流引用  ➟ " + "⟦" + subtag + "⟧", "✅ 保留:" + Tin + ",⛔️ 禁用: " + Tout, "⚠️ 筛选后剩余规则数为 0️⃣ 条, 请检查参数及原始链接", nan_link)
+                $notify("🤖 " + "Tham chiếu chuyển hướng  ➟ " + "⟦" + subtag + "⟧", "✅ 保留:" + Tin + ",⛔️ Vô hiệu hóa: " + Tout, "⚠️ Số quy tắc còn lại sau khi lọc là 0️⃣, vui lòng kiểm tra thông số và link gốc", nan_link)
             }
         } else {// if Tin (No Tin)
             if (nlist.length == 0) {
-                $notify("🤖 " + "分流引用  ➟ " + "⟦" + subtag + "⟧", "⛔️ 禁用: " + Tout, "⚠️ 筛选后剩余规则数为 0️⃣ 条, 请检查参数及原始链接", nan_link)
+                $notify("🤖 " + "Tham chiếu chuyển hướng  ➟ " + "⟦" + subtag + "⟧", "⛔️ Vô hiệu hóa: " + Tout, "⚠️ Số quy tắc còn lại sau khi lọc là 0️⃣, vui lòng kiểm tra thông số và link gốc", nan_link)
             }
         }
       nlist =Phide ==1? nlist : [...dlist,...nlist]
@@ -1361,9 +1361,9 @@ function Rule_Handle(subs, Pout, Pin) {
         if (nlist.length > 0) {
             var noin = nlist.length <= 10 ? emojino[nlist.length] : nlist.length
             if (Pntf0 != 0) {
-                $notify("🤖 " + "分流引用  ➟ " + "⟦" + subtag + "⟧", "✅ 保留:" + Tin, "🎯 已保留以下 " + noin + "条匹配规则:" + "\n ⨁ " + nlist.join("\n ⨁ "), rule_link)
+                $notify("🤖 " + "Tham chiếu chuyển hướng  ➟ " + "⟦" + subtag + "⟧", "✅ dự trữ:" + Tin, "🎯 Những điều sau đây đã được bảo lưu " + noin + "quy tắc phù hợp:" + "\n ⨁ " + nlist.join("\n ⨁ "), rule_link)
             }
-        } else { $notify("🤖 " + "分流引用  ➟ " + "⟦" + subtag + "⟧", "✅ 保留:" + Tin, "⚠️ 筛选后剩余规则数为 0️⃣ 条, 请检查参数及原始链接", nan_link) }
+        } else { $notify("🤖 " + "Tham chiếu chuyển hướng  ➟ " + "⟦" + subtag + "⟧", "✅ dự trữ:" + Tin, "⚠️ Số quy tắc còn lại sau khi lọc là 0️⃣, vui lòng kiểm tra thông số và link gốc", nan_link) }
       nlist =Phide ==1? nlist : [...dlist,...nlist]
       //return nlist;
     } else {  //if Tin
@@ -1405,7 +1405,7 @@ function Rule_Policy(content) { //增加、替换 policy
             ply0 = Ppolicy != "Shawn" ? Ppolicy : cnt[2]
             nn = cnt[0] + ", " + cnt[1] + ", " + ply0 //+ ", " + cnt[3]
         } else if (!RuleK.some(RuleCheck) && content) {
-            //$notify("未能解析" + "⟦" + subtag + "⟧" + "其中部分规则:", content, nan_link);
+            //$notify("Không thể phân tích cú pháp" + "⟦" + subtag + "⟧" + "Một số quy tắc này:", content, nan_link);
             return ""
         } else { return "" }
         if (cnt[0].indexOf("URL-REGEX") != -1 || cnt[0].indexOf("PROCESS") != -1) {
@@ -1593,7 +1593,7 @@ function Subs2QX(subs, Pudp, Ptfo, Pcert0, PTls13) {
                     }
                 } else if (type == "vless" && version<821) {
                   Perror = 1 ; // 无需反馈
-                  $notify("⚠️ 你的 Quantumult X 版本暂未支持 Vless 节点","请 ⚠️不要⚠️ 跑来 解析器🤖️ 反馈",list0[i])
+                  $notify("⚠️ Phiên bản Quantumult X của bạn không hỗ trợ nút Vless ", ⚠️ Đừng ⚠️  Chạy đến phân tích cú pháp 🤖 ️ Phản hồi",list0[i])
                 } else if (type == "vless" ) { // version 150 support vless 
                   node=VL2QX(list0[i], Pudp, Ptfo, Pcert0, PTls13)
                 } else if (QuanXK.some(NodeCheck1)) {
@@ -1628,7 +1628,7 @@ function Subs2QX(subs, Pudp, Ptfo, Pcert0, PTls13) {
         }
     }
     if (failedList.length > 0 && Pntf0 != 0) {
-        $notify(`⚠️ 有 ${failedList.length} 条数据解析失败, 已忽略`, "出错内容👇", failedList.join("\n"));
+        $notify(`⚠️ có ${failedList.length} Không thể phân tích dữ liệu, bị bỏ qua`, "Nội dung lỗi👇", failedList.join("\n"));
     }
     //$notify("QXList","check below content",QXlist)
     return QXlist;
@@ -1915,7 +1915,7 @@ function Fobfs(jsonl, Pcert0, PTls13) {
     return obfsi.join(", ")
   } else if (jsonl.net !="tcp" && jsonl.net !="none" &&  jsonl.net != undefined){ // 过滤掉 h2/http 等类型
     Perror = 1
-    $notify("⚠️ Quantumult X 不支持该类型节点", "vmess + " + jsonl.net, JSON.stringify(jsonl))
+    $notify("⚠️ Quantumult X không hỗ trợ loại nút này", "vmess + " + jsonl.net, JSON.stringify(jsonl))
     return "NOT-SUPPORTTED"
   } else if ((jsonl.net == "tcp" || jsonl.net == "none") && jsonl.type != undefined && jsonl.type != "none" && jsonl.type != "" && jsonl.type != "vmess") {
     return "NOT-SUPPORTTED"
@@ -1924,12 +1924,12 @@ function Fobfs(jsonl, Pcert0, PTls13) {
 
 //对.的特殊处理(in/out & rename中)
 function Dot2(cnt) {
-    cnt = cnt ? cnt.replace(/\\\./g, "这是个点") : ""
+    cnt = cnt ? cnt.replace(/\\\./g, "Đây là một điểm") : ""
     return cnt
 }
 
 function ToDot(cnt) {
-    cnt = cnt ? cnt.replace(/这是个点/g, ".") : ""
+    cnt = cnt ? cnt.replace(/Đây là một điểm/g, ".") : ""
     return cnt
 }
 
@@ -1988,18 +1988,18 @@ function Filter(servers, Pin, Pout) {
     var no1 = Nlist.length <= 10 ? emojino[Nlist.length] : Nlist.length;
     if (Pntf0 == 1 && Delist.length >= 1) {//通知部分
         if (Pin && no1 > 0) { //有 in 参数就通知保留部分
-            $notify("👥 引用" + "⟦" + subtag + "⟧" + " 开始节点筛选", "🕹 筛选关键字: " + pfi + pfo, "☠️ 已保留以下 " + no1 + "个节点\n" + Nname.join(", "), sub_link);
+            $notify("👥 Trích dẫn" + "⟦" + subtag + "⟧" + " Bắt đầu lọc nút", "🕹 Lọc từ khóa: " + pfi + pfo, "☠️ Những điều sau đây đã được bảo lưu " + no1 + "Một nút\n" + Nname.join(", "), sub_link);
         } else if (Pout && no > 0) {
-            $notify("👥 引用" + "⟦" + subtag + "⟧" + " 开始节点筛选", "🕹 筛选关键字: " + pfi + pfo, "☠️ 已删除以下 " + no + "个节点\n" + Delist.join(", "), sub_link);
+            $notify("👥 Trích dẫn" + "⟦" + subtag + "⟧" + " Bắt đầu lọc nút", "🕹 Lọc từ khóa: " + pfi + pfo, "☠️ Những điều sau đây đã bị xóa " + no + "Một nút\n" + Delist.join(", "), sub_link);
         }
     } else if (no1 == 0 || no1 == null) { //无剩余节点时强制通知
-        $notify("‼️ ⟦" + subtag + "⟧" + "筛选后节点数为0️⃣", "⚠️ 请自行检查原始链接以及筛选参数", link0, sub_link);
+        $notify("‼️ ⟦" + subtag + "⟧" + "Số lượng node sau khi lọc là 0️⃣", "⚠️ Vui lòng tự kiểm tra link gốc và thông số lọc", link0, sub_link);
     }
     return Nlist
 }
 
 function FilterScript(servers, script) {
-    $notify("🤖 启用脚本进行筛选", "", script);
+    $notify("🤖 Bật tập lệnh để lọc", "", script);
     try {
         const $ = Tools();
         eval(script);
@@ -2008,11 +2008,11 @@ function FilterScript(servers, script) {
         const IN = filter(nodes);
         const res = servers.filter((_, i) => IN[i]);
         if (res.length === 0) {
-            $notify("‼️ ⟦" + subtag + "⟧" + "筛选后节点数为0️⃣", "⚠️ 请自行检查原始链接以及筛选参数", link0, sub_link);
+            $notify("‼️ ⟦" + subtag + "⟧" + "Số lượng node sau khi lọc là 0️⃣", "⚠️ Vui lòng tự kiểm tra link gốc và thông số lọc", link0, sub_link);
         }
         return res;
     } catch (err) {
-        $notify("❌ 脚本筛选出现错误", "", err);
+        $notify("❌ Đã xảy ra lỗi khi lọc tập lệnh", "", err);
         return servers;
     }
 }
@@ -2291,7 +2291,7 @@ try {
   return cntii
 } catch (err) {
   if(Perror == 0) {
-  $notify("❌ 解析出现错误,已忽略该条目", "⚠️ 请点击通知，发送订阅链接进行反馈", cntf+"\n"+ err, bug_link);
+  $notify("❌ Đã xảy ra lỗi khi phân tích cú pháp và mục nhập đã bị bỏ qua", "⚠️ Vui lòng nhấp vào thông báo và gửi liên kết đăng ký để nhận phản hồi", cntf+"\n"+ err, bug_link);
 }
 }
   return ""
@@ -2488,7 +2488,7 @@ function Rename(str) {
 }
 
 function RenameScript(servers, script) {
-    $notify("🤖 启用脚本进行重命名", "", script);
+    $notify("🤖 Kích hoạt tập lệnh để đổi tên", "", script);
     try {
         const $ = Tools().rename;
         // extract server tags
@@ -2498,7 +2498,7 @@ function RenameScript(servers, script) {
         // rename nodes
         return servers.map((s, i) => s.split("tag=")[0] + "tag=" + newNames[i]);
     } catch (err) {
-        $notify("❌ 脚本重命名出现错误", "", err);
+        $notify("❌ Đã xảy ra lỗi khi đổi tên tập lệnh", "", err);
         return servers;
     }
 
@@ -2512,25 +2512,25 @@ function emoji_del(str) {
 //为节点名添加 emoji
 function get_emoji(emojip, sname) {
    var Lmoji = { 
-    "🏳️‍🌈": ["流量", "套餐", "剩余", "重置", "到期" , "时间", "应急", "过期", "Bandwidth", "expire", "Traffic", "traffic"],
-    "🇴🇲": ["阿曼", " OM "],
-    "🇦🇩": ["安道尔","安道爾", "Andorra"],
-    "🇦🇴": ["安哥拉"],
-    "🇦🇫": ["阿富汗"],
-    "🇩🇿": ["阿尔及利亚","阿爾及利亞"],
-    "🇫🇴": ["法羅群島","法罗群岛"],
-    "🇧🇲": ["百慕大"],
-    "🇦🇽": ["奧蘭群島", "奥兰群岛"],
-    "🇦🇿": ["阿塞拜疆","Azerbaijan"],
-    "🇦🇹": ["奥地利", "奧地利", "Austria", "维也纳"],
-    "🇦🇺": ["AU", "Australia", "Sydney", "澳大利亚", "澳洲", "墨尔本", "悉尼" ,"土澳", "京澳","廣澳","滬澳","沪澳","广澳"],
-    "🇧🇪": ["BE", "比利時","比利时","Belgium"],
-    "🇧🇬": ["保加利亚", "保加利亞","Bulgaria"],
-    "🇵🇰": ["巴基斯坦","Pakistan", "PAKISTAN"],
-    "🇧🇭": ["巴林","Bahrain"],
-    "🇵🇾": ["巴拉圭","Paraguay"],
-    "🇧🇧": ["巴巴多斯"],
-    "🇬🇶": ["赤道几内亚","赤道幾內亞"],
+    "🏳️‍🌈": ["Lưu lượng truy cập", "Gói", "Số dư", "Đặt lại", "Hết hạn", "Thời gian", "Khẩn cấp", "Hết hạn"", "Bandwidth", "expire", "Traffic", "traffic"],
+    "🇴🇲": ["Oman", " OM "],
+    "🇦🇩": ["Andorra", "Andorra"],
+    "🇦🇴": ["Ăng-gô-la", "Angola"],
+    "🇦🇫": ["Afghanistan"],
+    "🇩🇿": ["Algeria"],
+    "🇫🇴": ["Quần đảo Faroe", "Quần đảo Faroe"],
+    "🇧🇲": ["Bermuda"],
+    "🇦🇽": ["Quần đảo Åland"],
+    "🇦🇿": ["Azerbaijan"],
+    "🇦🇹": ["Áo", "Austria"],
+    "🇦🇺": ["AU", "Australia", "Sydney", "Úc"],
+    "🇧🇪": ["BE", "Bỉ","Belgium"],
+    "🇧🇬": ["Bulgaria"],
+    "🇵🇰": ["Pakistan", "PAKISTAN"],
+    "🇧🇭": ["Bahrain"],
+    "🇵🇾": ["Paraguay"],
+    "🇧🇧": ["Barbados"],
+    "🇬🇶": ["Guinea"],
     "🇹🇱": ["东帝汶","東帝汶"],
     "🇰🇭": ["柬埔寨","Cambodia"],
     "🇿🇼": ["津巴布韦","津巴布韋"],
@@ -2589,7 +2589,7 @@ function get_emoji(emojip, sname) {
     "🇸🇪": ["SE", "Sweden","瑞典"],
     "🇹🇭": [" TH", "Thailand", "泰国", "泰國", "曼谷"],
     "🇹🇷": ["TR ","TR-", "TR_", "TUR", "Turkey", "土耳其", "伊斯坦布尔"],
-    "🇻🇳": ["VN", "越南", "胡志明市", "Vietnam"],
+    "🇻🇳": ["VN", "Việt Nam", "Thành phố Hồ Chí Minh", "Vietnam"],
     "🇮🇹": ["Italy", " IT ", "Nachash", "意大利", "米兰", "義大利"],
     "🇿🇦": ["South Africa", "南非", "Johannesburg"],
     "🇦🇪": ["United Arab Emirates", "阿联酋","AE ", "迪拜", "阿聯酋", "Dubai"],
@@ -3040,8 +3040,8 @@ function Clash2QX(cnt) {
       node = Ptfo0 != 0 ? XTFO(node,Ptfo0) : node
       nodelist.push(node)
     }catch (e) {
-      $notify(`⚠️该节点解析错误, 暂时已忽略处理`,`可点击通知并发送链接反馈至 bot`,JSON.stringify(node),bug_link )
-      $notify(`⚠️错误内容如下`,`可复制错误内容到反馈 bot`,JSON.stringify(node)+"\n\n"+e)
+      $notify(`⚠️Nút này phân tích lỗi, tạm thời bỏ qua quá trình xử lý `, có thể nhấp vào thông báo và gửi phản hồi liên kết đến bot`,JSON.stringify(node),bug_link )
+      $notify(`⚠️Nội dung lỗi như sau`,`bạn có thể copy nội dung lỗi vào phản hồi bot`,JSON.stringify(node)+"\n\n"+e)
     }
   }
   return nodelist.join("\n")
