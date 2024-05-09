@@ -2512,7 +2512,7 @@ function emoji_del(str) {
 //为节点名添加 emoji
 function get_emoji(emojip, sname) {
    var Lmoji = { 
-    "🏳️‍🌈": ["Lưu lượng truy cập", "Gói", "Số dư", "Đặt lại", "Hết hạn", "Thời gian", "Khẩn cấp", "Hết hạn"", "Bandwidth", "expire", "Traffic", "traffic"],
+    "🏳️‍🌈": ["Lưu lượng truy cập", "Gói", "Số dư", "Đặt lại", "Hết hạn", "Thời gian", "Khẩn cấp", "Hết hạn", "Bandwidth", "expire", "Traffic", "traffic"],
     "🇴🇲": ["Oman", " OM "],
     "🇦🇩": ["Andorra", "Andorra"],
     "🇦🇴": ["Ăng-gô-la", "Angola"],
