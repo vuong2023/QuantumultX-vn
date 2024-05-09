@@ -3040,7 +3040,7 @@ function Clash2QX(cnt) {
       node = Ptfo0 != 0 ? XTFO(node,Ptfo0) : node
       nodelist.push(node)
     }catch (e) {
-      $notify(`⚠️Nút này phân tích lỗi, tạm thời bỏ qua quá trình xử lý `, có thể nhấp vào thông báo và gửi phản hồi liên kết đến bot`,JSON.stringify(node),bug_link )
+      $notify(`⚠️Nút này phân tích lỗi, tạm thời bỏ qua quá trình xử lý `,`có thể nhấp vào thông báo và gửi phản hồi liên kết đến bot`,JSON.stringify(node),bug_link )
       $notify(`⚠️Nội dung lỗi như sau`,`bạn có thể copy nội dung lỗi vào phản hồi bot`,JSON.stringify(node)+"\n\n"+e)
     }
   }
