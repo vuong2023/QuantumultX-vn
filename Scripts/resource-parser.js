@@ -1593,7 +1593,7 @@ function Subs2QX(subs, Pudp, Ptfo, Pcert0, PTls13) {
                     }
                 } else if (type == "vless" && version<821) {
                   Perror = 1 ; // 无需反馈
-                  $notify("⚠️ Phiên bản Quantumult X của bạn không hỗ trợ nút Vless ", ⚠️ Đừng ⚠️  Chạy đến phân tích cú pháp 🤖 Phản hồi",list0[i])
+                  $notify("⚠️Phiên bản Quantumult X hiện chưa hỗ trợ các nút Vless","vui lòng⚠️không⚠️Đừng đưa ra phân tích.🤖️phản hồi",list0[i])
                 } else if (type == "vless" ) { // version 150 support vless 
                   node=VL2QX(list0[i], Pudp, Ptfo, Pcert0, PTls13)
                 } else if (QuanXK.some(NodeCheck1)) {
