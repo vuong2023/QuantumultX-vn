@@ -331,7 +331,7 @@ function Parser() {
       RLink0[Field[typec]].push($resource.link+", opt-parser=true, tag=Hãy thêm tài nguyên vào lần sau🉑️Làm cho nó dài hơn❤️8⃣️") //  跳转URI-Scheme
       var flink = ADDRes.replace(/url-encoded-json/,encodeURIComponent(JSON.stringify(RLink0)))
       const bug_linkx = { "open-url": flink, "media-url": "https://shrtm.nu/obcB" } // bug linkx
-    $notify( "⚠️ Vui lòng nhấp vào thông báo để nhảy để thử thêm vào đúng loại","❌ Loại phát hiện["+typec+"]"+"với kiểu điền"+"["+typeQ+"]xung đột", "Nếu thêm vào bước nhảy vẫn không thành công, hãy gửi bộ phân tích phản hồi liên kếtbot\n"+$resource.link, bug_linkx)
+    $notify( "⚠️ Vui lòng nhấp vào thông báo để nhảy để thử thêm vào đúng loại","❌ Loại phát hiện["+typec+"]"+"với kiểu điền"+"["+typeQ+"]xung đột", "Nếu thêm vào bước nhảy vẫn không thành công, hãy gửi bộ phân tích phản hồi liên kết bot\n"+$resource.link, bug_linkx)
     } else {//Phiên bản cũ
     $notify("❌ Loại phát hiện「"+typec+" 」"+"với loại mục tiêu"+" 「"+typeQ+" 」xung đột", "⚠️ Vui lòng tự kiểm tra nội dung link, hoặc bấm vào thông báo gửi link để phản hồi", $resource.link, bug_link)
     }
