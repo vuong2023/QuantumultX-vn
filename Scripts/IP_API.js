@@ -29,7 +29,7 @@ const emojis = [
   "🐌",
   "👥",
 ];
-var city0 = "高谭市";
+var city0 = "Thành phố Gotham";
 var isp0 = "Cross-GFW.org";
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -54,8 +54,8 @@ function ISP_ValidCheck(para) {
 }
 
 function Area_check(para) {
-  if (para == "中华民国") {
-    return "台湾";
+  if (para == "Việt Nam Muôn Năm") {
+    return "Việt Nam";
   } else {
     return para;
   }
@@ -250,15 +250,15 @@ var title = flags.get(obj["countryCode"]) + " " + City_ValidCheck(obj["city"]); 
 var subtitle = ISP_ValidCheck(obj["org"] || obj.as);
 var ip = obj["query"];
 var description =
-  "服务商:" +
+  "Dịch vụ:" +
   obj["isp"] +
   "\n" +
-  "地区:" +
+  "Quận Thành Phố:" +
   City_ValidCheck(obj["regionName"]) +
   "\n" +
   "IP:" +
   obj["query"] +
   "\n" +
-  "时区:" +
+  "Múi giờ:" +
   obj["timezone"];
 $done({ title, subtitle, ip, description });
